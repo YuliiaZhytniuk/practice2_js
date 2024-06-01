@@ -23,7 +23,7 @@ const users = [
     gender: "female",
     age: 34,
   },
- {
+  {
     id: "88beb2f3-e4c2-49f3-a0a0-ecf957a95af3",
     name: "Ross Vazquez",
     email: "rossvazquez@xinware.com",
@@ -47,7 +47,7 @@ const users = [
     gender: "female",
     age: 21,
   },
- {
+  {
     id: "334f8cb3-eb04-45e6-abf4-4935dd439b70",
     name: "Carey Barr",
     email: "careybarr@nurali.com",
@@ -94,7 +94,7 @@ const users = [
 
 // function getUserNames(users) {
 //   return users.map(user => user.name);
-   
+
 // }
 // console.log(getUserNames(users));
 
@@ -109,7 +109,6 @@ const users = [
 // [об'єкт Ross Vazquez, об'єкт Elma Head, об'єкт Carey Barr]
 // console.log (getUsersWithAge (users, 30, 40));
 // [об'єкт Moore Hensley, об'єкт Sharlene Bush, об'єкт Blackburn Dotson, об'єкт Sheree Anthony]
- 
 
 // function getUsersWithAge (users, min, max) {
 //   return users.filter(user => user.age >= min && user.age <= max);
@@ -118,11 +117,44 @@ const users = [
 
 // Отримати масив імен користувачів по статті (стать gender)
 // console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
-function getUsersWithGender(users, gender) {
-// return users.filter(user => user.gender === gender).map(user => user.name);
-return users.reduce((userNames, user) => user.gender === gender ?[...userNames, user.name] : userNames , [] )
-}
+// function getUsersWithGender(users, gender) {
+// // return users.filter(user => user.gender === gender).map(user => user.name);
+// return users.reduce((userNames, user) => user.gender === gender ?[...userNames, user.name] : userNames , [] )
+// }
 
-console.log(getUsersWithGender(users, 'male'));
+// console.log(getUsersWithGender(users, 'male'));
 
+// Отримати масив всіх навичок усіх користувачів (поле skills), при цьому не повинно бути
+// повторювань навичок і вони мають бути відсортовані в алфавітному порядку.
+// console.log(getSortedUniqueSkills(users));
+// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
 
+// function getSortedUniqueSkills(users) {
+//   return users
+//     .flatMap((user) => user.skills)
+//     .filter((skill, index, arr) => arr.indexOf(skill) === index)
+//     .toSorted((a, b) => a.localeCompare(b));
+// }
+// console.log(getSortedUniqueSkills(users));
+
+//Створити статистику - об'єкт, у якому вказується кількість тегів
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+const newTweets = tweets.flatMap((tweet) => tweet.tags);
+const statistic = {};
+newTweets.forEach((tag) => {
+  console.log(statistic[tag]);
+  if (!statistic[tag]) {
+    statistic[tag] = 1;
+  } else {
+    statistic[tag] += 1;
+  }
+
+  console.log(statistic);
+});
