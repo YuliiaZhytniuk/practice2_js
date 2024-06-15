@@ -95,3 +95,25 @@
 // function double() {
 //   items.forEach((item) => (item.textContent *= 2));
 // }
+
+
+// Завдання 16
+//  При натисканні на будь-який рядок у табличці відобразіть
+//  повідомлення з назвою продукту та його ціною.
+//  "Ви вибрали <product> за <price>".
+
+const table = document.getElementById('productTable');
+
+const text = document.getElementById('productDetails');
+
+table.addEventListener('click', showText);
+
+function showText(event) {
+    if (event.target.nodeName !== 'TD') {
+        return
+    } 
+    const parent = event.target.parentNode;
+    const product = parent.firstElementChild.textContent;
+    const price = parent.lastElementChild.textContent;
+    text.insertAdjacentHTML('afterbegin', `<p>Ви вибрали ${product} за ${price}</p>`);    
+}
